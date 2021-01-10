@@ -1,15 +1,37 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles({
+export default makeStyles((theme)=>({
   blueButtons:{
-    padding: '10px',
-    textAlign: 'right'
+    padding: '5px',
+    textAlign: 'right',
+    marginLeft: 'auto',
+    background: '#3f51b5',
+    color: '#fff',
+    transform: 'skewX(-20deg)',
+    marginRight:' 10px'
   },
   cartButton:{
-    borderRadius: '0'
+    borderRight:' 1px solid #90a0f1',
+    fontSize: '0.675rem',
+    padding: '0',
+    borderRadius: '0',
+    color: 'inherit',
+    transform: 'skewX(20deg)'
   },
   priceButton:{
-    borderRadius: '0'
+    fontSize: '0.775rem',
+    padding: '0',
+    borderRadius: '0',
+    color: 'inherit',
+    marginLeft:' 10px',
+    transform: 'skewX(20deg)'
+  },
+  cPrice:{
+    marginRight: '10px',
+    textDecoration: 'line-through',
+  },
+  dPrice:{
+    
   },
   white:{
     color:'#fff',
@@ -42,7 +64,7 @@ export default makeStyles({
   },
   cardContainer:{
     padding:'5px 15px;',
-    height: '30px',
+    height: '77px',
     overflow: 'hidden'
   },
   overlay: {
@@ -77,4 +99,4 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
-});
+}));
