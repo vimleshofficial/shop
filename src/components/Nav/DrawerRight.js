@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import {
   Divider,
   Drawer,
@@ -12,22 +13,25 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import useStyle from "./styles";
 
-const DrawerRight = ({ openRight, righttHandleDrawerClose }) => {
+const DrawerRight = ({ openRight, righttHandleDrawerClose, onMobileRight }) => {
   const theme = useTheme();
   const classes = useStyle();
   return (
     <Drawer
-      className={classes.drawer}
+      className={clsx(classes.drawer, onMobileRight && classes.moHide)}
       variant="persistent"
       anchor="right"
       open={openRight}
       classes={{
-        paper: classes.drawerPaper,
+        paper: clsx(classes.drawerPaper, classes.drawerPaperRight),
       }}
     >
       <div className={classes.drawerContainer}>
         <div className={classes.drawerHeaderRight}>
-          <IconButton onClick={righttHandleDrawerClose}>
+          <IconButton
+            className={classes.rightIconButton}
+            onClick={righttHandleDrawerClose}
+          >
             {theme.direction === "ltr" ? (
               <ChevronRightIcon />
             ) : (

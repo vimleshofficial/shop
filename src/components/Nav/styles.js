@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import noImg from "../../images/emptycart.gif";
 const drawerWidth = 240;
 export default makeStyles((theme) => ({
   appBar: {
@@ -41,17 +42,33 @@ export default makeStyles((theme) => ({
   },
   menuButtonRight: {
     marginLeft: "auto",
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "inline-flex",
+    },
   },
-
+  menuButton: {
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "inline-flex",
+    },
+  },
   hide: {
     display: "none",
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    [theme.breakpoints.down("sm")]: {},
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundImage: noImg,
+  },
+  drawerPaperRight: {
+    backgroundImage: `url(${noImg})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
   },
   drawerHeader: {
     display: "flex",
@@ -78,5 +95,22 @@ export default makeStyles((theme) => ({
   link: {
     textDecoration: "none",
     color: "#757575",
+  },
+  leftIconButton: {
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "inline-flex",
+    },
+  },
+  rightIconButton: {
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "inline-flex",
+    },
+  },
+  moHide: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
 }));

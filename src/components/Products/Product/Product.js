@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+
 import {
   Card,
   Typography,
@@ -11,14 +11,14 @@ import {
 import { Link } from "react-router-dom";
 import useStyle from "./styles";
 const Products = ({ product }) => {
-  const [productBasePath, setProductBasePath] = useState(null);
-  const data = useSelector((state) => state.shopData.data);
-  console.log(productBasePath);
-  useEffect(() => {
-    if (data) {
-      setProductBasePath(data.imagePath.product);
-    }
-  }, [data]);
+  // const [productBasePath, setProductBasePath] = useState(null);
+  // const data = useSelector((state) => state.shopData.data);
+  // console.log(productBasePath);
+  // useEffect(() => {
+  //   if (data) {
+  //     setProductBasePath(data.imagePath.product);
+  //   }
+  // }, [data]);
   const classes = useStyle();
   return (
     <Card className={classes.card}>
@@ -30,7 +30,7 @@ const Products = ({ product }) => {
         className={classes.cardContainer}
         title={product.store_product_name}
       >
-        <Typography variant="h6">
+        <Typography className={classes.cardHedding} variant="h6">
           <Link
             className={classes.black}
             to={`/product/${product.store_product_id}`}

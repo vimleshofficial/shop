@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -15,7 +16,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import useStyle from "./styles";
 
-const DrawerLeft = ({ openLeft, leftHandleDrawerClose }) => {
+const DrawerLeft = ({ openLeft, leftHandleDrawerClose, onMobileLeft }) => {
   const [categories, setCategories] = useState(null);
   const data = useSelector((state) => state.shopData.data);
   useEffect(() => {
@@ -28,7 +29,7 @@ const DrawerLeft = ({ openLeft, leftHandleDrawerClose }) => {
   const classes = useStyle();
   return (
     <Drawer
-      className={classes.drawer}
+      className={clsx(classes.drawer, onMobileLeft && classes.moHide)}
       variant="persistent"
       anchor="left"
       open={openLeft}
@@ -38,7 +39,10 @@ const DrawerLeft = ({ openLeft, leftHandleDrawerClose }) => {
     >
       <div className={classes.drawerContainer}>
         <div className={classes.drawerHeader}>
-          <IconButton onClick={leftHandleDrawerClose}>
+          <IconButton
+            className={classes.leftIconButton}
+            onClick={leftHandleDrawerClose}
+          >
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (

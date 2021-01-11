@@ -26,7 +26,11 @@ const Category = ({ category }) => {
         title={category.category_name}
       />
       <div className={classes.overlay}>
-        <Typography variant="h5">
+        <Typography
+          className={classes.catTitle}
+          variant="h6"
+          title={category.category_name}
+        >
           <Link className={classes.white} to={`/category/${category.cat_id}`}>
             {category.category_name}
           </Link>

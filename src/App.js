@@ -11,7 +11,7 @@ import useStyle from "./styles";
 
 function App() {
   const [openLeft, setOpenLeft] = useState(false);
-  const [openRight, setOpenRight] = useState(false);
+  const [openRight, setOpenRight] = useState(true);
   const classes = useStyle();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,7 +20,11 @@ function App() {
   return (
     <Router>
       <div className={classes.root}>
-        <Nav setOpenLeft={setOpenLeft} setOpenRight={setOpenRight} />
+        <Nav
+          openLeft={openLeft}
+          setOpenLeft={setOpenLeft}
+          setOpenRight={setOpenRight}
+        />
         <main
           className={clsx(classes.content, {
             [classes.contentShiftLeft]: openLeft,
@@ -31,18 +35,24 @@ function App() {
             <Container maxWidth="lg">
               <Switch>
                 <Route path="/" exact>
-                  <div>
-                    <h1>Home Page</h1>
-                  </div>
+                  <Categories setOpenLeft={setOpenLeft} />
                 </Route>
                 <Route
                   path="/categories"
-                  render={({ match }) => <Categories />}
+                  render={({ match }) => (
+                    <Categories setOpenLeft={setOpenLeft} />
+                  )}
                 />
                 <Route path="/products" render={({ match }) => <Products />} />
                 <Route
                   path="/category/:categoryId"
-                  render={({ match }) => <Products match={match} />}
+                  render={({ match }) => (
+                    <Products
+                      openLeft={openLeft}
+                      setOpenLeft={setOpenLeft}
+                      match={match}
+                    />
+                  )}
                 />
               </Switch>
             </Container>
